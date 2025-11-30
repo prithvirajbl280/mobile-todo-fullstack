@@ -11,7 +11,7 @@ const RegisterScreen = ({ navigation }: any) => {
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('backend-production-e244.up.railway.app/auth/register', { email, password });
+            const response = await axios.post('https://backend-production-e244.up.railway.app/auth/register', { email, password });
             dispatch(setCredentials({ user: { email }, token: response.data.access_token }));
         } catch (error) {
             Alert.alert('Registration Failed', 'Could not register user');
