@@ -17,7 +17,7 @@ const TaskListScreen = ({ navigation }: any) => {
 
     const fetchTasks = async () => {
         try {
-            const response = await axios.get('backend-production-e244.up.railway.app/tasks', {
+            const response = await axios.get('https://backend-production-e244.up.railway.app/tasks', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             dispatch(setTasks(response.data));
@@ -28,7 +28,7 @@ const TaskListScreen = ({ navigation }: any) => {
 
     const handleDelete = async (id: string) => {
         try {
-            await axios.delete(`http://10.0.2.2:3000/tasks/${id}`, {
+            await axios.delete(`https://backend-production-e244.up.railway.app/tasks/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             dispatch(deleteTask(id));
