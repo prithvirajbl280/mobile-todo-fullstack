@@ -17,14 +17,14 @@ const TaskFormScreen = ({ route, navigation }: any) => {
         try {
             if (task) {
                 const response = await axios.patch(
-                    `backend-production-e244.up.railway.app/tasks/${task._id}`,
+                    `https://backend-production-e244.up.railway.app/tasks/${task._id}`,
                     { title, description, priority },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 dispatch(updateTask(response.data));
             } else {
                 const response = await axios.post(
-                    'http://10.0.2.2:3000/tasks',
+                    'https://backend-production-e244.up.railway.app/tasks',
                     { title, description, priority },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
