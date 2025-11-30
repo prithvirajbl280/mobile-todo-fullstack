@@ -12,7 +12,7 @@ const LoginScreen = ({ navigation }: any) => {
     const handleLogin = async () => {
         try {
             // Replace with your backend URL (e.g., http://10.0.2.2:3000 for Android Emulator)
-            const response = await axios.post('backend-production-e244.up.railway.app/auth/login', { email, password });
+            const response = await axios.post('https://backend-production-e244.up.railway.app/auth/login', { email, password });
             dispatch(setCredentials({ user: { email }, token: response.data.access_token }));
         } catch (error) {
             Alert.alert('Login Failed', 'Invalid credentials');
