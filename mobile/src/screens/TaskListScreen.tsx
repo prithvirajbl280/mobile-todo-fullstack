@@ -17,7 +17,7 @@ const TaskListScreen = ({ navigation }: any) => {
 
     const fetchTasks = async () => {
         try {
-            const response = await axios.get('http://10.0.2.2:3000/tasks', {
+            const response = await axios.get('backend-production-e244.up.railway.app/tasks', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             dispatch(setTasks(response.data));
