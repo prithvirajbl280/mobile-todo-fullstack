@@ -17,7 +17,7 @@ const TaskFormScreen = ({ route, navigation }: any) => {
         try {
             if (task) {
                 const response = await axios.patch(
-                    `http://10.0.2.2:3000/tasks/${task._id}`,
+                    `backend-production-e244.up.railway.app/tasks/${task._id}`,
                     { title, description, priority },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
