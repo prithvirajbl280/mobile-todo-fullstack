@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../store/authSlice';
 import axios from 'axios';
 
+import { API_URL } from '../config';
+
 const RegisterScreen = ({ navigation }: any) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -11,7 +13,7 @@ const RegisterScreen = ({ navigation }: any) => {
 
     const handleRegister = async () => {
         try {
-            const response = await axios.post('https://backend-production-e244.up.railway.app/auth/register', { email, password });
+            const response = await axios.post(`${API_URL}/auth/register`, { email, password });
             dispatch(setCredentials({ user: { email }, token: response.data.access_token }));
         } catch (error) {
             Alert.alert('Registration Failed', 'Could not register user');

@@ -5,6 +5,8 @@ import { RootState } from '../store/store';
 import { addTask, updateTask } from '../store/tasksSlice';
 import axios from 'axios';
 
+import { API_URL } from '../config';
+
 const TaskFormScreen = ({ route, navigation }: any) => {
     const task = route.params?.task;
     const [title, setTitle] = useState(task?.title || '');
@@ -17,14 +19,14 @@ const TaskFormScreen = ({ route, navigation }: any) => {
         try {
             if (task) {
                 const response = await axios.patch(
-                    `https://backend-production-e244.up.railway.app/tasks/${task._id}`,
+                    `${API_URL}/tasks/${task._id}`,
                     { title, description, priority },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 dispatch(updateTask(response.data));
             } else {
                 const response = await axios.post(
-                    'https://backend-production-e244.up.railway.app/tasks',
+                    `${API_URL}/tasks`,
                     { title, description, priority },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );

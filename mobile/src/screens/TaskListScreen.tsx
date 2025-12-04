@@ -6,6 +6,8 @@ import { setTasks, deleteTask } from '../store/tasksSlice';
 import { logout } from '../store/authSlice';
 import axios from 'axios';
 
+import { API_URL } from '../config';
+
 const TaskListScreen = ({ navigation }: any) => {
     const tasks = useSelector((state: RootState) => state.tasks.tasks);
     const token = useSelector((state: RootState) => state.auth.token);
@@ -17,7 +19,7 @@ const TaskListScreen = ({ navigation }: any) => {
 
     const fetchTasks = async () => {
         try {
-            const response = await axios.get('https://backend-production-e244.up.railway.app/tasks', {
+            const response = await axios.get(`${API_URL}/tasks`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             dispatch(setTasks(response.data));
@@ -28,7 +30,7 @@ const TaskListScreen = ({ navigation }: any) => {
 
     const handleDelete = async (id: string) => {
         try {
-            await axios.delete(`https://backend-production-e244.up.railway.app/tasks/${id}`, {
+            await axios.delete(`${API_URL}/tasks/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             dispatch(deleteTask(id));
